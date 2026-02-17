@@ -29,7 +29,6 @@ final class ShoppingListRepository: ShoppingListRepositoryDelegate {
         var descriptor = FetchDescriptor<ShoppingListItem>()
         descriptor.sortBy = [
             SortDescriptor(\ShoppingListItem.categoryRawValue),
-//            SortDescriptor(\ShoppingListItem.isCompleted),
             SortDescriptor(\ShoppingListItem.name)
         ]
         return try modelContext.fetch(descriptor)

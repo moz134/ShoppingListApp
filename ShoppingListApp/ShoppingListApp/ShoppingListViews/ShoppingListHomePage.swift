@@ -24,20 +24,19 @@ struct ShoppingListHomePage: View {
                     headerSection()
                     inputCardSection()
                     listContentSection()
+                        .padding(.horizontal)
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
             }
             .background(Color.gray.opacity(0.08))
             .sheet(item: $viewModel.editingItem) { item in
-//                EditItemView(item: item,
-//                    onSave: { name, category in
-//                        viewModel.applyEdit(name: name, category: category)
-//                    },
-//                    onCancel: {
-//                        viewModel.cancelEdit()
-//                    }
-//                )
+                EditItemView(item: item,
+                    onSave: { name, category in
+                        viewModel.applyEdit(name: name, category: category)
+                    },
+                    onCancel: {
+                        viewModel.cancelEdit()
+                    }
+                )
             }
             .alert("Delete Item", isPresented: Binding(
                 get: {
@@ -80,11 +79,14 @@ struct ShoppingListHomePage: View {
             
             Image(systemName: "cart.fill")
                 .font(.system(size: 36, weight: .semibold))
-                .foregroundStyle(.gray)
+                .foregroundStyle(.white)
+                .frame(width: 80, height: 80)
+                .background(Color.blue)
+                .cornerRadius(40)
                 
                 
             Text("Grocery List")
-                .font(.system(size: 42, weight: .bold))
+                .font(.system(size: 30, weight: .bold))
                 .minimumScaleFactor(0.8)
                 .lineLimit(1)
 
@@ -98,7 +100,7 @@ struct ShoppingListHomePage: View {
     private func inputCardSection() -> some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("Add New Item")
-                .font(.system(size: 28, weight: .bold))
+                .font(.system(size: 24, weight: .bold))
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 20)
@@ -136,7 +138,7 @@ struct ShoppingListHomePage: View {
                     Image(systemName: "plus")
                         .font(.system(size: 20, weight: .bold))
                     Text("Add Item")
-                        .font(.system(size: 30, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
@@ -166,23 +168,23 @@ struct ShoppingListHomePage: View {
                 Image(systemName: "cart")
                     .font(.system(size: 56, weight: .light))
                     .foregroundStyle(.secondary)
+                    .frame(width: 30, height: 30)
                     .padding(.bottom, 4)
-
                 Text("Your grocery list is empty")
-                    .font(.system(size: 38, weight: .medium))
+                    .font(.system(size: 24, weight: .semibold))
                     .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
 
                 Text("Add items above to get started")
-                    .font(.system(size: 28, weight: .regular))
+                    .font(.system(size: 18, weight: .regular))
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 42)
+            .padding(.vertical, 20)
         } else if viewModel.visibleItems.isEmpty {
             VStack(alignment: .leading, spacing: 12) {
                 filterSection()
-
                 VStack(spacing: 10) {
                     Text("No items in \(viewModel.selectedFilter.title)")
                         .font(.system(size: 30, weight: .medium))
@@ -194,12 +196,12 @@ struct ShoppingListHomePage: View {
                         .multilineTextAlignment(.center)
                 }
                 .frame(maxWidth: .infinity)
+                .padding(.top, 10)
             }
-            .padding(.vertical, 36)
+            .padding(.bottom, 20)
         } else {
             VStack(alignment: .leading, spacing: 12) {
                 filterSection()
-
                 ForEach(viewModel.groupedVisibleItems, id: \.category) { group in
                     Text(group.category.rawValue)
                         .font(.system(size: 22, weight: .bold))
@@ -252,7 +254,7 @@ struct ShoppingListHomePage: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical, 10)
             .padding(.horizontal, 6)
-            .foregroundStyle(isSelected ? Color.white : Color.gray)
+            .foregroundStyle(isSelected ? Color.white : Color.black)
             .background(isSelected ? Color.blue : Color.gray.opacity(0.2))
             .clipShape(RoundedRectangle(cornerRadius: 14))
         }
@@ -278,7 +280,7 @@ struct ShoppingListHomePage: View {
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
                 .background(isSelected ? Color.blue : Color.gray.opacity(0.2))
-                .foregroundStyle(isSelected ? Color.white : Color.gray)
+                .foregroundStyle(isSelected ? Color.white : Color.black)
                 .clipShape(Capsule())
         }
         .buttonStyle(.plain)
@@ -300,4 +302,3 @@ struct ShoppingListHomePage: View {
     ShoppingListHomePage(modelContext: container.mainContext)
         .modelContainer(container)
 }
-

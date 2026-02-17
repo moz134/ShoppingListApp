@@ -20,16 +20,14 @@ struct ShoppingListItemRow: View {
                     .foregroundStyle(item.isCompleted ? .green : .secondary)
                     .font(.title2)
             }
-            .buttonStyle(.plain)
-
             VStack(alignment: .leading, spacing: 6) {
                 Text(item.name)
-                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .font(.system(size: 18, weight: .semibold))
                     .strikethrough(item.isCompleted, color: .secondary)
                     .foregroundStyle(item.isCompleted ? .secondary : .primary)
 
                 Text(item.category.rawValue)
-                    .font(.system(size: 13, weight: .bold, design: .rounded))
+                    .font(.system(size: 13, weight: .bold))
                     .foregroundStyle(.secondary)
             }
 
