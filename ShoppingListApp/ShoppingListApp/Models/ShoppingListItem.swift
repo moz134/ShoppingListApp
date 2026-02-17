@@ -15,7 +15,9 @@ enum ItemCategory: String, CaseIterable, Codable, Identifiable {
     case breads = "Breads"
     case meats = "Meats"
 
-    var id: String { rawValue }
+    var id: String {
+        rawValue
+    }
 }
 
 @Model
@@ -26,8 +28,12 @@ final class ShoppingListItem {
     var isCompleted: Bool
 
     var category: ItemCategory {
-        get { ItemCategory(rawValue: categoryRawValue) ?? .milk }
-        set { categoryRawValue = newValue.rawValue }
+        get {
+            ItemCategory(rawValue: categoryRawValue) ?? .milk
+        }
+        set {
+            categoryRawValue = newValue.rawValue
+        }
     }
 
     init(id: UUID = UUID(), name: String, category: ItemCategory, isCompleted: Bool = false) {

@@ -76,20 +76,16 @@ struct ShoppingListHomePage: View {
 
     private func headerSection() -> some View {
         VStack(spacing: 12) {
-            
             Image(systemName: "cart.fill")
                 .font(.system(size: 36, weight: .semibold))
                 .foregroundStyle(.white)
                 .frame(width: 80, height: 80)
                 .background(Color.blue)
                 .cornerRadius(40)
-                
-                
             Text("Grocery List")
                 .font(.system(size: 30, weight: .bold))
                 .minimumScaleFactor(0.8)
                 .lineLimit(1)
-
             Text("Add items to your shopping list")
                 .font(.system(size: 20, weight: .medium))
                 .foregroundStyle(.secondary)

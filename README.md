@@ -36,6 +36,7 @@ A simple grocery/shopping list app built with **SwiftUI** and **SwiftData**.
    - Example: `iPhone 16` (or any iOS 17+ simulator)
 6. Press the **Run** button (triangle) or `Cmd + R`.
 7. The app will launch in the simulator.
+8. If you are using devic, then please use lightmode only. I have not made to support in dark mode.
 
 ## If build fails because of signing
 
