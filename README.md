@@ -24,8 +24,8 @@ A simple grocery/shopping list app built with **SwiftUI** and **SwiftData**.
 2. iOS Simulator runtime installed in Xcode
 
 ## Run the app (Beginner friendly)
-
-1. Open Finder and go to:
+1. Clone the project from https://github.com/moz134/ShoppingListApp.git
+1. Open Finder and go to the download folder:
    - `~/ShoppingListApp/ShoppingListApp.xcodeproj`
 2. Double-click:
    - `ShoppingListApp.xcodeproj`
