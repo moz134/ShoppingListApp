@@ -72,6 +72,12 @@ final class ShoppingListViewModel: ObservableObject {
 
         Task {
             do {
+                let fetchedItems = try await repository.fetchItems()
+                let countOfDuplicates = fetchedItems.filter {$0.name.lowercased() == itemName.lowercased()}.count
+                if countOfDuplicates > 0 {
+                    errorMessage = "this item already exists in this category"
+                    return
+                }
                 _ = try await repository.addItem(name: trimmedName, category: itemCategory)
                 items = try await repository.fetchItems()
                 itemName = ""
