@@ -115,7 +115,7 @@ struct ShoppingListHomePage: View {
                     .background(Color.gray.opacity(0.15))
                     .clipShape(RoundedRectangle(cornerRadius: 14))
                     .textInputAutocapitalization(.words)
-                    .onChange(of: viewModel.itemName) { updatedValue, _ in
+                    .onChange(of: viewModel.itemName) { oldValue, updatedValue in
                         if updatedValue.count > characterLimit {
                             viewModel.itemName = String(updatedValue.prefix(characterLimit))
                         }
